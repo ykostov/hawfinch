@@ -12,6 +12,11 @@ public class UserController {
 
     private final UserService userService;
 
+    @RequestMapping("/users/{id}")
+    public User getUser(@PathVariable String id) {
+        return userService.getUser(id);
+    }
+
     @RequestMapping("/users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
