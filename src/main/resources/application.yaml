@@ -1,12 +1,13 @@
 spring:
   jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   hibernate:
     ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5432/hawfinch_dev
-  properties:
-    hibernate:
-      dialect=org:
-        hibernate:
-          dialect:
-            PostgreSQLDialect
+
