@@ -37,4 +37,10 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/users/{userId}/langs/{langId}")
+    public User enrollLangToUser(@PathVariable String userId,
+                                 @PathVariable String langId) {
+        return userService.enrollLangToUser(userId, langId);
+    }
+
 }
