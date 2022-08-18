@@ -1,5 +1,7 @@
 package com.orbisds.hawfinch.users;
 
+import com.orbisds.hawfinch.lang.Lang;
+import com.orbisds.hawfinch.lang.LangRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ public class UserService {
 
 
     private final UserRepository userRepository;
+    private final LangRepository langRepository;
 
     public User getUser(String id) {
         return userRepository.findById(id).orElse(null);
@@ -37,4 +40,10 @@ public class UserService {
     }
 
 
+    public User enrollLangToUser(String userId, String langId) {
+        User user = userRepository.findById(userId).get();
+        Lang lang = langRepository.findById(langId).get();
+        user.enrollLangs(lang);
+        return userRepository.save(user);
+    }
 }
