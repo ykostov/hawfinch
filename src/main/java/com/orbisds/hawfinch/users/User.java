@@ -2,6 +2,7 @@ package com.orbisds.hawfinch.users;
 
 
 import com.orbisds.hawfinch.lang.Lang;
+import com.orbisds.hawfinch.positions.Position;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,15 @@ public class User {
     )
     private Set<Lang> enrolledLangs = new HashSet<>();
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "position_id", referencedColumnName = "position_id")
+    private Position position;
+
     public void enrollLangs(Lang lang) {
         enrolledLangs.add(lang);
+    }
+
+    public void enrollPosition(Position position) {
+        this.position = position;
     }
 }

@@ -43,4 +43,10 @@ public class UserController {
         return userService.enrollLangToUser(userId, langId);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/users/{userId}/position/{positionId}")
+    public User enrollPositionToUser(@PathVariable String userId,
+                                 @PathVariable String positionId) {
+        return userService.enrollPositionToUser(userId, positionId);
+    }
+
 }
